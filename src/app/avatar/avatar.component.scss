@@ -1,0 +1,55 @@
+#avatar{
+    width:100%;
+    height:100%;
+    svg{
+        position: absolute;
+    }
+    #eyes{
+        &.closed{
+            path{
+                transform:scaleY(0);
+            }
+        }
+        
+        //origins
+        &.o-center{
+            path{
+                transform-origin: center;
+            }
+        }
+        &.o-top{
+            path{
+                transform-origin: top;
+            }
+        }
+        &.o-bottom{
+            path{
+                transform-origin: top;
+            }
+        }
+        &.o-auto-top{
+            path:first-child{
+                transform-origin: top right;
+            }
+            path:last-child{
+                transform-origin: top left;
+            }
+        }
+        &.o-auto-center{
+            path:first-child{
+                transform-origin: center right;
+            }
+            path:last-child{
+                transform-origin: center left;
+            }
+        }
+        &.o-auto-bottom{
+            path:first-child{
+                transform-origin: bottom right;
+            }
+            path:last-child{
+                transform-origin: bottom left;
+            }
+        }
+    }
+}

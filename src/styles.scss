@@ -1,0 +1,23 @@
+html,
+body{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;   
+}
+body{
+    //font-family:'Roboto Mono', monospace;
+    background: #232835;
+    overflow: hidden;
+}
+
+#generated{
+    position: absolute;
+    top:0;
+    left: 0;
+}
+#generated-path{
+    fill: rgba(0, 0, 0, 0);
+    stroke-width: 3;
+    stroke: #0f0;
+}

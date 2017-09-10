@@ -1,0 +1,28 @@
+<div id="avatar">
+
+
+  <!-- <svg id='buble' [attr.height]='bubble.height+"px"' [attr.width]="moves.size" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    
+    <symbol fill='pink' id='heart' viewBox="0 0 24 24"><path d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z"/></symbol>
+
+    <path fill="#fff" d="M12 1c-6.628 0-12 4.573-12 10.213 0 2.39.932 4.591 2.427 6.164l-2.427 5.623 7.563-2.26c9.495 2.598 16.437-3.251 16.437-9.527 0-5.64-5.372-10.213-12-10.213z"/>
+    <use x="10" y="10" width="10" height="10" [attr.href]='"#"+bubble.emotion'></use>
+  </svg> -->
+
+  <svg [attr.width]="innerWidth" [attr.height]="innerHeight" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" [attr.viewBox]="[0,0,innerWidth,innerHeight].join(' ')" attr.enable-background="[0,0,innerWidth,innerHeight].join(' ')" xml:space="preserve">
+
+    <g id="face">
+
+    <path [attr.fill]="faceColor" d="M195.565,195.566c5.912,5.912-197.043,5.912-191.132,0c-5.911,5.912-5.911-197.044,0-191.133
+    c-5.911-5.911,197.044-5.911,191.132,0C201.478-1.478,201.478,201.479,195.565,195.566z" />
+      <g [ngClass]="emotion.eyeGroupClass" id='eyes'>
+        <path id="eye-r" [attr.fill]="eyeColor" d="M97.333,94.52c0,2.843-2.305,5.147-5.147,5.147H54.48c-2.843,0-5.147-2.305-5.147-5.147V56.814
+          c0-2.843,2.305-5.147,5.147-5.147h37.705c2.843,0,5.147,2.305,5.147,5.147V94.52z" />
+        <path id="eye-l" [attr.fill]="eyeColor" d="M151.333,94.52c0,2.843-2.305,5.147-5.147,5.147H108.48c-2.843,0-5.147-2.305-5.147-5.147V56.814
+          c0-2.843,2.305-5.147,5.147-5.147h37.705c2.843,0,5.147,2.305,5.147,5.147V94.52z" />
+      </g>
+    </g>
+  </svg>
+  <svg id='motion-path'></svg>
+</div>
