@@ -33,10 +33,8 @@ export async function awakeSequence(){
     })
 
   await timeline.finished;
-  await self.moveEyesLeft();
-  await self.moveEyesRight();
   await self.moveEyesReset(300);
-  
+  utils.playSound("chirp-2");
   await self.blinkSoft();
 
   return;

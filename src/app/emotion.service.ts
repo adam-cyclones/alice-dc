@@ -4,7 +4,8 @@ import * as anime from "animejs";
 
 const utils = new UtilsService();
 
-import { awakeSequence } from "./emotions/sequence/awake.sequence"; 
+import { awakeSequence } from "./emotions/sequence/awake.sequence";
+import { wonderLoop } from "./emotions/sequence/wonder.sequence";
 import { sleepSequence } from "./emotions/sequence/sleep.sequence";
 import { 
   moveEyesLeft, 
@@ -68,6 +69,8 @@ export class EmotionService implements Emotions{
   sad(){  }
   awake(){ return awakeSequence.call(this); }
   sleep(){ return sleepSequence.call(this); }
+  wonderLoop(){ return wonderLoop.call(this); }
+
   //Blinks and winks
   blinkHard(){ return blinkHard.call(this); }
   blinkSoft(){ return blinkSoft.call(this); }

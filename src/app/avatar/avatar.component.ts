@@ -44,8 +44,9 @@ export class AvatarComponent implements OnInit, AfterViewInit {
   
   async test(){
     const emo = this.emotion;
-    //await emo.awake()
-    //await emo.awake()
+    await emo.awake();
+    await emo.wonderLoop();
+    await emo.awake();
   }
 
   ngAfterViewInit(){
@@ -64,51 +65,51 @@ export class AvatarComponent implements OnInit, AfterViewInit {
 
 
     let duration = 2000;
-    setInterval(()=>{
-      this.moves.motionPath.draw({
-        start:{
-          top:-100,
-          left:this.utils.randomIntClamp(0,innerHeight - this.size)
-        },
-        end:{
-          top:this.utils.randomIntClamp(0,innerHeight - this.size),
-          left:this.utils.randomIntClamp(0,innerHeight - this.size)
-        }
-      })
-      this.moves.motionPath.heading.duration = duration;
-      console.log( this.moves.motionPath.heading.speedRating ); 
+    // setInterval(()=>{
+    //   this.moves.motionPath.draw({
+    //     start:{
+    //       top:-100,
+    //       left:this.utils.randomIntClamp(0,innerHeight - this.size)
+    //     },
+    //     end:{
+    //       top:this.utils.randomIntClamp(0,innerHeight - this.size),
+    //       left:this.utils.randomIntClamp(0,innerHeight - this.size)
+    //     }
+    //   })
+    //   this.moves.motionPath.heading.duration = duration;
+    //   console.log( this.moves.motionPath.heading.speedRating ); 
 
-      const headingInfo = this.moves.motionPath.heading;
+    //   const headingInfo = this.moves.motionPath.heading;
 
-      console.log(speedMap[headingInfo.speedRating])
+    //   console.log(speedMap[headingInfo.speedRating])
 
-      if(headingInfo.vertical === "up" && headingInfo.horizontal === "left"){
-        this.emotion.moveEyesTopLeft( speedMap[headingInfo.speedRating] );
-      }
-      if(headingInfo.vertical === "up" && headingInfo.horizontal === "right"){
-        this.emotion.moveEyesTopRight( speedMap[headingInfo.speedRating] );
-      }
-      if(headingInfo.vertical === "down" && headingInfo.horizontal === "left"){
-        this.emotion.moveEyesLeft( speedMap[headingInfo.speedRating] );
-      }
-      if(headingInfo.vertical === "down" && headingInfo.horizontal === "right"){
-        this.emotion.moveEyesRight( speedMap[headingInfo.speedRating] );
-      }
+    //   if(headingInfo.vertical === "up" && headingInfo.horizontal === "left"){
+    //     this.emotion.moveEyesTopLeft( speedMap[headingInfo.speedRating] );
+    //   }
+    //   if(headingInfo.vertical === "up" && headingInfo.horizontal === "right"){
+    //     this.emotion.moveEyesTopRight( speedMap[headingInfo.speedRating] );
+    //   }
+    //   if(headingInfo.vertical === "down" && headingInfo.horizontal === "left"){
+    //     this.emotion.moveEyesLeft( speedMap[headingInfo.speedRating] );
+    //   }
+    //   if(headingInfo.vertical === "down" && headingInfo.horizontal === "right"){
+    //     this.emotion.moveEyesRight( speedMap[headingInfo.speedRating] );
+    //   }
 
-      var path = anime.path('#generated path');
-      var motionPath = anime({
-        targets: '#avatar svg #face',
-        translateX: path('x'),
-        translateY: path('y'),
-        //rotate: path('angle'),
-        //direction: 'alternate',
-        easing: 'easeInOutQuad',
-        duration: duration,
-        complete(){
-          //self.emotion.moveEyesReset(500)
-        }
-      });
-    },this.utils.randomIntClamp( 2000, 10000 ))
+    //   var path = anime.path('#generated path');
+    //   var motionPath = anime({
+    //     targets: '#avatar svg #face',
+    //     translateX: path('x'),
+    //     translateY: path('y'),
+    //     //rotate: path('angle'),
+    //     //direction: 'alternate',
+    //     easing: 'easeInOutQuad',
+    //     duration: duration,
+    //     complete(){
+    //       //self.emotion.moveEyesReset(500)
+    //     }
+    //   });
+    // },this.utils.randomIntClamp( 2000, 10000 ))
 
   }
 

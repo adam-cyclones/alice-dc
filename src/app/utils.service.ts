@@ -29,6 +29,64 @@ interface MotionPath{
     left:number
   }
 }
+
+async function getSoundMap(){
+  const myRequest = new Request("/assets/sound-fx.json");
+  return await fetch(myRequest).then(function(response) {
+      var contentType = response.headers.get("content-type");
+      if(contentType && contentType.includes("application/json")) {
+        return response.json();
+      }
+      throw new TypeError("Oops, we haven't got JSON!");
+    })
+    .then(function(json) { return json; })
+    .catch(function(error) { console.log(error); });
+}
+
+interface Sounds{
+    /*
+    * @description A generic chirp sound
+    */  
+    "chirp-1":"chirp1.wav",
+    /**
+     * A quieter chirp sound
+    */
+    "chirp-2":"chirp2-quieter.wav",
+    /**
+     * A longer chirp
+    */
+    "chirp-3":"chirp3-longer.wav",
+    /**
+     * A high pitched chirp
+    */
+    "chirp-4":"chirp4-high-pitch.wav",
+    /**
+     * A very long chirp
+    */
+    "chirp-5":"chirp5-extra-long.wav",
+    /**
+     * An excited chirp
+    */
+    "chirp-6":"chirp6-excited.wav",
+    /**
+     * Another chirp
+    */
+    "chirp-7":"chirp7.wav",
+    /**
+     * An alarmed chirp
+    */
+    "chirp-8":"chirp8-alarmed.wav",
+    /**
+     * A wow chirp
+    */
+    "chirp-9":"chirp9-wow.wav",
+    /**
+     * A simple babble
+    */
+    "babble-1":"babble-1.wav"
+}
+type ArrayOfSounds = Array<keyof Sounds>
+
 //singletons
 /**
  * Caches the coordinates for tracking
@@ -212,5 +270,27 @@ export class UtilsService {
       }, randomTime)
     });
   }
-}
 
+  async playSound(sound:keyof Sounds){
+    const soundsAvailable = await getSoundMap();
+    const audio = new Audio("/assets/"+soundsAvailable[sound]);
+    audio.play();
+  }
+  /**
+   * Play a random sound or one of a supplied range of sounds in an array.
+  */
+  async playRandomSound(...sounds:ArrayOfSounds){
+    if(sounds.length > 0){
+      const min = 0;
+      const max = sounds.length - 1;
+      this.playSound( sounds[this.randomIntClamp(min,max)] );
+    }
+    else{
+      const soundsAvailable = await getSoundMap();
+      const keys = Object.keys(soundsAvailable);
+      const min = 0;
+      const max = keys.length - 1;
+      this.playSound(keys[ this.randomIntClamp(min,max) ] as keyof Sounds);
+    }
+  }
+}
